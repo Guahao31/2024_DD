@@ -1,8 +1,8 @@
-# ZJU-Digital Logic Design Lab 2023
+# ZJU-Digital Logic Design Lab 2024
 
-本仓库用来发布《数字逻辑设计》课程实验文档，你可以直接查看[在线文档](https://guahao31.github.io/2023_DD)，或将本仓库拉至本地部署。在校园网环境下，你也可以访问 ZJU Git Pages 上部署的[实验文档](http://3200105455.pages.zjusct.io/2023_dd)以及 ZJU Git 中的[仓库](https://git.zju.edu.cn/3200105455/2023_dd)。
+本仓库用来发布《数字逻辑设计》课程实验文档，你可以直接查看[在线文档](https://guahao31.github.io/2024_DD)，或将本仓库拉至本地部署。在校园网环境下，你也可以访问 ZJU Git Pages 上部署的[实验文档](http://3200105455.pages.zjusct.io/2024_dd)以及 ZJU Git 中的[仓库](https://git.zju.edu.cn/3200105455/2024_dd)。
 
-本文档面向对象为 2023-2024 秋冬学期《数字逻辑设计》**刘海风老师**。
+本文档面向对象为 2023-2024 春夏学期《数字逻辑设计》**刘海风老师**。
 
 本文档的实验工具介绍，实验部分内容和思考题借鉴了《计算机系统》系列课程的实验文档，你可以在他们的 [ZJU git 主页](https://git.zju.edu.cn/zju-sys)上查看相关内容，非常感谢《计算机系统》课程老师与历届助教在课程建设上的努力！
 
@@ -31,10 +31,10 @@ $ pip install mkdocs-material
 
 ```bash
 # 拉取仓库，两者皆可
-$ git clone git@github.com:Guahao31/2023_DD.git
-$ git clone https://github.com/Guahao31/2023_DD.git
+$ git clone git@github.com:Guahao31/2024_DD.git
+$ git clone https://github.com/Guahao31/2024_DD.git
 # 构建
-$ cd ./2023_DD
+$ cd ./2024_DD
 $ mkdocs serve
 ```
 
@@ -52,6 +52,6 @@ $ mkdocs serve
 * 发现文本中的错别字/格式错误/图片缺失
 * 对文档有建议
 
-欢迎提交 Issue 或通过邮箱与我沟通，我的邮箱为 guahao@zju.edu.cn 。
+欢迎提交 Issue/PR 或通过邮箱与我沟通，我的邮箱为 guahao@zju.edu.cn 。
 
 非常期待得到你的反馈！
