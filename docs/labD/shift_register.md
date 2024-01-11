@@ -279,7 +279,7 @@ module P2S
     assign finish = // Your code here
 
     assign EN = !start && finish;
-    assign sclk = finish | clk;
+    assign sclk = finish | ~clk;
     assign sclrn = 1'b1;
     assign sout = Q[0];
 
@@ -296,9 +296,6 @@ endmodule
 
 !!! success "Congratulations!"
     完成 `P2S` 及其仿真，即可能获得 100 分（后一小节为加分项）。
-
-!!! failure "令人悲伤的是"
-    虽然你可能刚刚“艰难”地完成了 `P2S` 的设计，但不得不指出这一设计在时序上简直就是灾难，仔细观察波形会发现，我们的 `sclk` 与 `sout` 是同时变化的，这在板上可能会造成不断的闪烁（因为难以连续的正确通信），但大体上还是我们想显示的内容。一般会推荐使用状态机来完善，这一改进将在下一节解释。如果你的目的仅是获得本实验的满分，到此为止吧！
 
 ### 主板 LED 与七段数码管驱动模块
 
@@ -348,15 +345,15 @@ module HexsTo8Seg(
     output [63:0] seg_data
 );
 
-    Hex2Seg HTS0(.hex(hexs[31:28]), .LE(LEs[7]), .point(point[7]), .segment(seg_data[7:0]));  
-    Hex2Seg HTS1(.hex(hexs[27:24]), .LE(LEs[6]), .point(point[6]), .segment(seg_data[15:8])); 
-    Hex2Seg HTS2(.hex(hexs[23:20]), .LE(LEs[5]), .point(point[5]), .segment(seg_data[23:16]));  
-    Hex2Seg HTS3(.hex(hexs[19:16]), .LE(LEs[4]), .point(point[4]), .segment(seg_data[31:24]));
+    HexToSeg HTS0(.hex(hexs[31:28]), .LE(LEs[7]), .point(points[7]), .segment(seg_data[7:0]));  
+    HexToSeg HTS1(.hex(hexs[27:24]), .LE(LEs[6]), .point(points[6]), .segment(seg_data[15:8])); 
+    HexToSeg HTS2(.hex(hexs[23:20]), .LE(LEs[5]), .point(points[5]), .segment(seg_data[23:16]));  
+    HexToSeg HTS3(.hex(hexs[19:16]), .LE(LEs[4]), .point(points[4]), .segment(seg_data[31:24]));
 
-    Hex2Seg HTS4(.hex(hexs[15:12]), .LE(LEs[3]), .point(point[3]), .segment(seg_data[39:32]));
-    Hex2Seg HTS5(.hex(hexs[11:8]),  .LE(LEs[2]), .point(point[2]), .segment(seg_data[47:40]));
-    Hex2Seg HTS6(.hex(hexs[7:4]),   .LE(LEs[1]), .point(point[1]), .segment(seg_data[55:48]));
-    Hex2Seg HTS7(.hex(hexs[3:0]),   .LE(LEs[0]), .point(point[0]), .segment(seg_data[63:56]));
+    HexToSeg HTS4(.hex(hexs[15:12]), .LE(LEs[3]), .point(points[3]), .segment(seg_data[39:32]));
+    HexToSeg HTS5(.hex(hexs[11:8]),  .LE(LEs[2]), .point(points[2]), .segment(seg_data[47:40]));
+    HexToSeg HTS6(.hex(hexs[7:4]),   .LE(LEs[1]), .point(points[1]), .segment(seg_data[55:48]));
+    HexToSeg HTS7(.hex(hexs[3:0]),   .LE(LEs[0]), .point(points[0]), .segment(seg_data[63:56]));
 
 endmodule
 
@@ -381,23 +378,6 @@ endmodule
 
 请注意，将 `clkdiv` 分频得到的 `divres[20]` 接到两个 `P2S` 封装模块的 `start` 端口。
 
-!!! note "一种可能的对 P2S 的改进方法"
-    参考施青松老师等著的实验课程教材。
+## 思考题
 
-    我们的目的是将 `sclk` 与 `sout` 的变化时机调整为类似下图（其中 `sh_clk` 是我们控制的时钟信号）：
-
-    <img src="../pic/sync_diagram.png">
-
-    我们使用一个信号 `reg [1:0]Go` 来记录前后两个时钟周期 start 的状态，以便确定最近第一个升起 start 信号的周期：
-
-    ```verilog
-    always @(posedge clk) begin
-        Go <= {Go[0], start};
-    end
-    ```
-
-    可知 `Go == 2'b01` 时代表最近的时钟上升沿刚刚收到了有效的 start 信号，此时开始读入并行数据并准备串行输出，可以得到状态转移图：
-
-    <img src="../pic/state_diagram.png">
-
-    也可进一步对状态机进行完善。
+**请选择完成“主板 LED 与七段数码管驱动模块”实验的同学回答这一思考题。**观察 `P2S` 模块对信号 `sclk` 的赋值语句 `assign sclk = finish | ~clk;`，解释信号 `sclk` 的含义，尤其需要解释其驱动中 `~clk` 这一信号的意义。（换言之，如果赋值语句为 `assign sclk = finish | clk;` 会有什么问题？）
