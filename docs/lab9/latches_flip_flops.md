@@ -168,13 +168,6 @@ module ET_D_flip_flop(
 )
 ```
 
-### 简单工程
-
-!!! danger
-    可以使用 ALLOW_CONBINATORIAL_LOOP 绕过检查。
-
-<!-- 使用一个简单的工程下板观察实现的几种锁存器和触发器的行为与现象。 -->
-
 ### 实验报告要求
 
 完成[实验内容](#lab-con)中的所有小节，给出使用的 testbench 代码、波形及解释。
