@@ -14,7 +14,7 @@
 根据真值表，可以得到以下激励函数（略有问题，请自行解决）：
 
 \begin{align}
-    D_A &= Q_A\\
+    D_A &= \overline{Q_A}\\
     D_B &= \overline{Q_A \oplus \overline{Q_B}}\\
     D_C &= \overline{\overline{\overline{Q_A} + \overline{Q_B}} \oplus \overline{Q_C}}\\
     D_D &= \overline{\overline{\overline{Q_A} + \overline{Q_B} + \overline{Q_C}} \oplus \overline{Q_D}}
