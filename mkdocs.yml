@@ -1,0 +1,84 @@
+site_name: 2023_DD
+# site_url: https://guahao31.github.io/2023_DD
+site_dir: public
+site_author: GNG not Gua
+repo_url: https://github.com/guahao31/2023_DD
+repo_name: 2023_DD
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 暗色模式
+    - media: "(prefers-color-scheme: dark)"
+      primary: teal
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 亮色模式
+  language: zh
+  features:
+    - content.code.copy
+    # - navigation.tabs
+    - navigation.expand
+    - navigation.top
+    # - navigation.sections
+  icon:
+    repo: fontawesome/brands/git-alt
+    
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - tables
+  - attr_list
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_css:
+  - _css/style.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - javascripts/tex-mml-chtml.js
+  # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+
+nav:
+  - Home: index.md
+  - Lab 4 - Warm Up:
+    - 实验工具安装: warmup/tools_installation.md
+    - Lab4-实验工具使用: warmup/lab4.md
+  - Lab 5 - Decoder: lab5/decoder.md
+  - Lab 6 - 7-Segment Display Decoder: lab6/seven-segment.md
+  - Lab 7 - Multiplexer: lab7/multiplexer.md
+  - Lab 8 - ALU: lab8/ALU.md
+  - Lab 9 - Latches & Flip-flops: lab9/latches_flip_flops.md
+  - Lab A - Synchronous counter: labA/sync_counter.md
+  - Lab B - Register: labB/register.md
+  - Lab C - Counter & Timer: labC/counter_timer.md
+  - Lab D - Shift Register: labD/shift_register.md
+  - Final Project: 
+    - 大程要求: final_project/final_project.md
+    - 外设使用: final_project/device.md
+  - Other:
+    - Git 基础: Other/about_git.md
+    - 在 Linux/macOS 上仿真: Other/Verilog_Simulation.md
+    - ISE 安装: Other/ISE_installation.md
+
