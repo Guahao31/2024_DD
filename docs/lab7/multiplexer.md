@@ -213,7 +213,7 @@ module DisplayNumber(
 
     ```
 
-可以使用提供的[约束文件](../attachment/constraints_lab7.xdc)（会得到报错 `Place 30-574`，请仔细查看报错，使用报错中给出的），获得 bitstream 并下载到板子上。因为我们并没有将 `btn` 信号进行去抖动处理，所以按钮按下时数字增长很多下是正常的。
+可以使用提供的[约束文件](../attachment/constraints_lab7.xdc)，获得 bitstream 并下载到板子上。因为我们并没有将 `btn` 信号进行去抖动处理，所以按钮按下时数字增长很多是正常的。
 
 ## 实验报告要求
 
