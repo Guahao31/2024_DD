@@ -1,0 +1,1368 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="GNG not Gua">
+      
+      
+      
+        <link rel="prev" href="../../labC/counter_timer/">
+      
+      
+        <link rel="next" href="../../Other/about_git/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>Lab D - Shift Register - 2024_DD</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_css/style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="2024_DD" class="md-header__button md-logo" aria-label="2024_DD" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2024_DD
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab D - Shift Register
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="暗色模式"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="暗色模式" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="亮色模式"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="亮色模式" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/guahao31/2024_DD" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    2024_DD
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="2024_DD" class="md-nav__button md-logo" aria-label="2024_DD" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    2024_DD
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/guahao31/2024_DD" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    2024_DD
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Lab 4 - Warm Up
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Lab 4 - Warm Up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../warmup/tools_installation/" class="md-nav__link">
+        实验工具安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../warmup/lab4/" class="md-nav__link">
+        Lab4-实验工具使用
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/decoder/" class="md-nav__link">
+        Lab 5 - Decoder
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab6/seven-segment/" class="md-nav__link">
+        Lab 6 - 7-Segment Display Decoder
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab7/multiplexer/" class="md-nav__link">
+        Lab 7 - Multiplexer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab8/ALU/" class="md-nav__link">
+        Lab 8 - ALU
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab9/latches_flip_flops/" class="md-nav__link">
+        Lab 9 - Latches & Flip-flops
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labA/sync_counter/" class="md-nav__link">
+        Lab A - Synchronous counter
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labB/register/" class="md-nav__link">
+        Lab B - Register
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labC/counter_timer/" class="md-nav__link">
+        Lab C - Counter & Timer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lab D - Shift Register
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lab D - Shift Register
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    实验背景
+  </a>
+  
+    <nav class="md-nav" aria-label="实验背景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    移位寄存器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74lv164a" class="md-nav__link">
+    74LV164A 芯片功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onboard-LED-7seg" class="md-nav__link">
+    主板 LED 与七段数码管
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    移位寄存器的实现
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    移位寄存器的应用
+  </a>
+  
+    <nav class="md-nav" aria-label="移位寄存器的应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    跑马灯
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#led" class="md-nav__link">
+    主板 LED 与七段数码管驱动模块
+  </a>
+  
+    <nav class="md-nav" aria-label="主板 LED 与七段数码管驱动模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#p2s" class="md-nav__link">
+    P2S 模块
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#led_1" class="md-nav__link">
+    主板 LED 与七段数码管驱动模块
+  </a>
+  
+    <nav class="md-nav" aria-label="主板 LED 与七段数码管驱动模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ledp2s" class="md-nav__link">
+    LEDP2S
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sseg_dev" class="md-nav__link">
+    Sseg_Dev
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    应用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    思考题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+          Other
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Other
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/about_git/" class="md-nav__link">
+        Git 基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/Verilog_Simulation/" class="md-nav__link">
+        在 Linux/macOS 上仿真
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/ISE_installation/" class="md-nav__link">
+        ISE 安装
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    实验背景
+  </a>
+  
+    <nav class="md-nav" aria-label="实验背景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    移位寄存器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74lv164a" class="md-nav__link">
+    74LV164A 芯片功能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onboard-LED-7seg" class="md-nav__link">
+    主板 LED 与七段数码管
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    移位寄存器的实现
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    移位寄存器的应用
+  </a>
+  
+    <nav class="md-nav" aria-label="移位寄存器的应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    跑马灯
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#led" class="md-nav__link">
+    主板 LED 与七段数码管驱动模块
+  </a>
+  
+    <nav class="md-nav" aria-label="主板 LED 与七段数码管驱动模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#p2s" class="md-nav__link">
+    P2S 模块
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#led_1" class="md-nav__link">
+    主板 LED 与七段数码管驱动模块
+  </a>
+  
+    <nav class="md-nav" aria-label="主板 LED 与七段数码管驱动模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ledp2s" class="md-nav__link">
+    LEDP2S
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sseg_dev" class="md-nav__link">
+    Sseg_Dev
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    应用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    思考题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">移位寄存器</h1>
+<div class="admonition danger">
+<p class="admonition-title">请注意</p>
+<p>本实验并未正式公布，内容与要求随时可能变化，仅供提前完成实验的同学参考。</p>
+</div>
+<h2 id="background">实验背景</h2>
+<h3 id="_2">移位寄存器</h3>
+<p>参考<a href="https://zh.wikipedia.org/wiki/%E7%A7%BB%E4%BD%8D%E5%AF%84%E5%AD%98%E5%99%A8">移位寄存器-维基百科</a>。</p>
+<p><strong>移位寄存器</strong>(shift register)是一种在若干相同时钟脉冲下工作的以触发器级联为基础的器件，每个触发器的输出接在触发器链的下一级触发器的“数据”输入端，使得电路在每个时钟脉冲内依次向左或向右移动一个比特，并在输出端进行输出。</p>
+<p>根据输入与输出特点，可有破坏性读出的串入串出、串入并出、并入串出等不同功能的移位寄存器。</p>
+<p><strong>串入串出</strong>，以 8 位右移移位寄存器为例，每次移位时，数据输入端移入最左边一位触发器的输出中，同时最右边一位触发器的输出移出并丢失。破坏性读出的含义是所有数据在被移位到最右边的位后就会丢失。</p>
+<p><strong>串入并出</strong>，可以将输入的串行数据以并行格式输出。在串行通信要求的几位数据完成输入后就可以在输出端的各位同时读出并行数据。</p>
+<p><img src="../pic/4-Bit_SIPO_Shift_Register.png"></p>
+<p><strong>并入串出</strong>，可以接收外部并行数据，以最高级位触发器输出作为串行输出位，使用一位控制信号来选择并行读入或串行输出。在写/移位控制线保持低电平时，将并行输入的数据写入寄存器中；在写/移位控制线保持高电平时，进行移位。</p>
+<p><img src="../pic/4-Bit_PISO_Shift_Register.png"></p>
+<p>本实验要求的右移移位寄存器功能为：能够并行输入与串行输入功能，使用一个控制信号选择并行输入或串入并出。串行/并行输入信号 <span class="arithmatex">\(\overline{Shift}/Load\)</span> 为低位时进行串入串出，在每个时钟上升沿进行右移同时将串行输入的 <code>shift_in</code> 信号移入最左边的触发器中；串行/并行输入信号为高位时进行并行写入，将并行输入端口数据 <code>par_in</code> 写入触发器中。</p>
+<p><img src="../pic/p_load_shift_reg.png" style="zoom: 90%"></p>
+<h3 id="74lv164a">74LV164A 芯片功能</h3>
+<p>仅作了解即可，本节内容参考 <a href="https://www.ti.com/lit/ds/symlink/sn74lv164a.pdf">datasheet</a>。</p>
+<p>74LV164A 功能为 8 位串入并出移位寄存器。清零端 <code>CLR</code> 低电平有效，异步重置将触发器的值修改为 <code>0</code>；串入数据端 <code>A, B</code> 均为高位时输入 <code>1</code>，其他输入下表示输入 <code>0</code>。使用的触发器为正边沿触发。</p>
+<p><img src="../pic/74LV164A_diagram.png"></p>
+<p>74LS164 芯片功能与 74LV164A 基本相同，使用的技术不同导致电气特性不同，我们不需要关注。</p>
+<h3 id="onboard-LED-7seg">主板 LED 与七段数码管</h3>
+<p>SWORD 板上 LED 与七段数码管均是由若干个 74LV164A 构成的<strong>串转并</strong>（串行输入、并行输出）模块控制，可以回想在使用板上 LED 与七段数码管时，我们会约束 <code>s_out, s_clk, s_clr</code> 等信号，这其实就是串转并模块需要的串行通信信号。</p>
+<p>以 LED 为例，板上共 16 个 LED，需要 16 位信号进行控制，可以使用两个 74LV164A 组成 16 位右移移位寄存器来控制，在使用时，我们需要对 <code>LED_CLK, LED_DO</code> 等信号进行控制，在 <code>LED_CLK</code> 上升沿会发生移位并将 <code>LED_DO</code> 信号的值传入寄存器最低位。</p>
+<p><img src="../pic/LED_diagram.png"></p>
+<p>七段数码管与 LED 构成相似，区别在于，每个七段数码管都由 8 位信号（七段 + 小数点 = 八个信号）控制，板上共 8 个七段数码管，因此需要 8 个 74LV164A 相连形成 64 位串行输入转并行输出。</p>
+<h2 id="_3">移位寄存器的实现</h2>
+<details class="tip" open="open">
+<summary>关于实现</summary>
+<p>你可以参照实验背景中的原理图编写代码，可以使用 LabA 中的 <code>FD</code> <a href="../../labA/sync_counter#4-bit-sync-bin-counter">模块代码</a>，你可能需要学习 generate for 来简化代码。</p>
+<p>更推荐使用行为描述完成功能。对于在<a href="#application">移位寄存器的应用</a>中选择“主板 LED 与七段数码管驱动模块”的同学，你可能需要学习 parameter 相关内容，并使用参数设计移位寄存器模块。</p>
+<details class="note">
+<summary>参数设计与 generate</summary>
+<p>这里的内容主要参考了 <a href="https://www.chipverify.com/verilog/verilog-generate-block">chipverify 帖子</a>给出的例子。</p>
+<p>我们可以使用 generate 块来批量实例化或提供组合电路赋值，简单来说就是用代码写代码，比如在得到一个一位全加器后，希望通过八个一位级联方式得到八位全加器，我们可以用 generate for 得到八个一位全加器的实例，并给出相应连接：</p>
+<details class="info">
+<summary>8 位全加器代码</summary>
+<div class="language-verilog highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">module</span><span class="w"> </span><span class="n">FullAdder1b</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">A</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">B</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">Cin</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">Sum</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">Cout</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">);</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">Sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">Cin</span><span class="p">;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">Cout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="o">&amp;</span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">B</span><span class="o">&amp;</span><span class="n">Cin</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="o">&amp;</span><span class="n">Cin</span><span class="p">);</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="k">endmodule</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="k">module</span><span class="w"> </span><span class="n">FullAdder8b</span><span class="p">(</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">A</span><span class="p">,</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">B</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">Cin</span><span class="p">,</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Sum</span><span class="p">,</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">Cout</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="p">);</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">    </span><span class="kt">wire</span><span class="p">[</span><span class="mh">8</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">carry</span><span class="p">;</span><span class="w"> </span><span class="c1">// [0] for Cin of this module; [1...8] for Cout ports of 8 1-bit-full-adder</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">carry</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cin</span><span class="p">;</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">    </span><span class="k">genvar</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="c1">// Used in generate block</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">    </span><span class="k">generate</span><span class="w"> </span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">8</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">+</span><span class="mh">1</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">            </span><span class="c1">// instance of 1-bit-full-adder</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">            </span><span class="n">FullAdder1b</span><span class="w"> </span><span class="n">fa1b</span><span class="w"> </span><span class="p">(.</span><span class="n">A</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">B</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">Cin</span><span class="p">(</span><span class="n">carry</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">Sum</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">Cout</span><span class="p">(</span><span class="n">carry</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mh">1</span><span class="p">]));</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">        </span><span class="k">end</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">    </span><span class="k">endgenerate</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">Cout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">carry</span><span class="p">[</span><span class="mh">8</span><span class="p">];</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="k">endmodule</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+<p>我们经常有拓展位宽的需求，而每次改变位宽都重写代码会增加很多不必要的工作，Verilog 提供了基本的参数使用，我们可以结合参数和 generate 来简化代码，比如实现一个可以任意改变位宽的行波加法器：</p>
+<details class="info">
+<summary>全加器代码</summary>
+<div class="language-verilog highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">module</span><span class="w"> </span><span class="n">FullAdder</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="p">#(</span><span class="k">parameter</span><span class="w"> </span><span class="n">BIT_WIDTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">8</span><span class="p">)(</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="n">BIT_WIDTH</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">A</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="n">BIT_WIDTH</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">B</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">Cin</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="p">[</span><span class="n">BIT_WIDTH</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Sum</span><span class="p">,</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">Cout</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">);</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="kt">wire</span><span class="p">[</span><span class="nl">BIT_WIDTH:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">carry</span><span class="p">;</span><span class="w"> </span><span class="c1">// [0] for Cin of this module; [1...BIT_WIDTH] for Cout ports of {BIT_WIDTH} 1-bit-full-adder</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">carry</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cin</span><span class="p">;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="k">genvar</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="c1">// Used in generate block</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="k">generate</span><span class="w"> </span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BIT_WIDTH</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">+</span><span class="mh">1</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">            </span><span class="c1">// instance of 1-bit-full-adder</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">            </span><span class="n">FullAdder1b</span><span class="w"> </span><span class="n">fa1b</span><span class="w"> </span><span class="p">(.</span><span class="n">A</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">B</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">Cin</span><span class="p">(</span><span class="n">carry</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">Sum</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">Cout</span><span class="p">(</span><span class="n">carry</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mh">1</span><span class="p">]));</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">        </span><span class="k">end</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="k">endgenerate</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">Cout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">carry</span><span class="p">[</span><span class="n">BIT_WIDTH</span><span class="p">];</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="k">endmodule</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+<p>在进行实例化时，我们需要给出参数值，否则参数值将等于模块定义时的默认值。指定参数主要有两种方法，即 <code>#()</code> 与 <code>defparam</code>，这里仅用对全加器模块的 testbench 进行简单展示：</p>
+<details class="info">
+<summary>实例化方法</summary>
+<div class="language-verilog highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">module</span><span class="w"> </span><span class="n">FullAdder_tb</span><span class="p">();</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="kt">reg</span><span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="kt">reg</span><span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">B</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="n">Cin</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="kt">wire</span><span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Sum</span><span class="p">;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">Cout</span><span class="p">;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="n">FullAdder</span><span class="w"> </span><span class="p">#(.</span><span class="n">BIT_WIDTH</span><span class="p">(</span><span class="mh">10</span><span class="p">))</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">        </span><span class="n">test_inst</span><span class="w"> </span><span class="p">(.</span><span class="n">A</span><span class="p">(</span><span class="n">A</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">B</span><span class="p">(</span><span class="n">B</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">Cin</span><span class="p">(</span><span class="n">Cin</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">Sum</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">Cout</span><span class="p">(</span><span class="n">Cout</span><span class="p">));</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="k">initial</span><span class="w"> </span><span class="k">begin</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">        </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">10</span><span class="mi">&#39;d1023</span><span class="p">;</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">10</span><span class="mi">&#39;d1</span><span class="p">;</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">        </span><span class="n">Cin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">        </span><span class="p">#</span><span class="mh">10</span><span class="p">;</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">        </span><span class="c1">// ...</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="k">endmodule</span>
+</span></code></pre></div></td></tr></table></div>
+</details>
+<p>除了模块定义中的 <code>parameter</code>，Verilog 还提供了本地可用的参数 <code>localparam</code>，这部分内容请自行学习。</p>
+</details>
+</details>
+<p>使用 Verilog 代码完成一个 8 位<strong>右移移位</strong>寄存器，要求接口与功能如下：</p>
+<div class="language-verilog highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">module</span><span class="w"> </span><span class="n">ShiftReg8b</span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">input</span><span class="w">       </span><span class="n">clk</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">input</span><span class="w">       </span><span class="n">shiftn_loadp</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">input</span><span class="w">       </span><span class="n">shift_in</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">par_in</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">output</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Q</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">);</span>
+</span></code></pre></div>
+<ul>
+<li><code>clk</code>：时钟信号，在时钟上升沿对存储内容进行修改</li>
+<li><code>shiftn_loadp</code>：控制信号，在低电平时进行移位操作，在高电平时进行并行数据读入</li>
+<li><code>shift_in</code>：移位时移入的数据</li>
+<li><code>par_in</code>：八位并行输入数据</li>
+<li><code>Q</code>：并行输出数据</li>
+</ul>
+<p>完成移位寄存器设计后，书写测试代码进行测试。</p>
+<h2 id="application">移位寄存器的应用</h2>
+<div class="admonition note">
+<p class="admonition-title">请注意</p>
+<p>请从“跑马灯”和“主板 LED 与七段数码管驱动模块”中<strong>选择一个</strong>来完成，如果选择“主板 LED 与七段数码管驱动模块”则本实验将获得<strong>额外加分</strong>，加分仅能用到最后一次实验报告中，不会溢出。</p>
+</div>
+<h3 id="_4">跑马灯</h3>
+<p>设计一个简单的“跑马灯”应用：</p>
+<ul>
+<li><code>SW[1:0]</code>：调用 <a href="../../lab7/multiplexer/">Lab7</a> 中的 <code>CreateNumber</code> 模块，为两个 4 位寄存器 <code>regA, regB</code> 赋值，<code>SW[0]</code> 每一次从闭到开（即信号上升沿）时 <code>regB</code> 自增一，<code>SW[1]</code> 每一次从闭到开时 <code>regA</code> 自增一</li>
+<li>Arduino 上七段数码管：使用七段数码管的某两位分别显示 <code>regA, regB</code> 的值，请调用 <a href="../../lab7/multiplexer/">Lab7</a> 中的 <code>DisplayNumber</code> 模块</li>
+<li><code>SW[2]</code>：连接控制移位寄存器的 <code>shiftn_loadp</code> 端口。当 <code>SW[2]</code> 为 <code>1</code> 时进行并行输入，将 <code>{regA, regB}</code> 的值赋给移位寄存器；当 <code>SW[2]</code> 为 <code>0</code> 时进行串行输入的右移移位</li>
+<li><code>SW[3]</code>：连接控制移位寄存器的 <code>shift_in_</code> 端口，作为串行输入</li>
+<li>Arduino 上 LED：共 8 个 LED，依次表示移位寄存器的 <code>Q[7]~Q[0]</code> 数据输出</li>
+<li>关于时钟：请调用 <code>clk_1s</code> 模块获得一个 1s 脉冲的时钟，并将其接到移位寄存器的 <code>clk</code> 端口</li>
+</ul>
+<p>请自行书写代码和约束文件，下板后拍摄图片。</p>
+<h3 id="led">主板 LED 与七段数码管驱动模块</h3>
+<p>在<a href="#background">实验背景</a>中提到，SWORD 上 LED 和七段数码管中显示的内容由若干个 74LV164 的<strong>串转并</strong>的信号控制，如果希望在 LED 或七段数码管显示数据，我们提供 74LV164A 需要的串行信号即可，也就是说我们需要完成<strong>并转串</strong>的工作。</p>
+<h4 id="p2s">P2S 模块</h4>
+<p>并行数据转串行输出模块(P2S, Parallel to Serial Converter)的作用是将并行数据（比如 16 位 LED 亮灭的控制信号）转换成串行输出（同时需要管理串行通信的其他相关信号，如 <code>sclk, sclrn</code>）。<code>P2S</code> 模块定义如下：</p>
+<div class="language-verilog highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">module</span><span class="w"> </span><span class="n">P2S</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">#(</span><span class="k">parameter</span><span class="w"> </span><span class="n">BIT_WIDTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">8</span><span class="p">)(</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="k">input</span><span class="p">[</span><span class="n">BIT_WIDTH</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">par_in</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sclk</span><span class="p">,</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sclrn</span><span class="p">,</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sout</span><span class="p">,</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">EN</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">);</span>
+</span></code></pre></div>
+<p>一种可以使用的电路如图（但是有比较严重的问题，实际上板极有可能发生问题）：</p>
+<p><img src="../pic/P2S_diagram.png"></p>
+<p>以 7 位 P2S 模块为例，其工作过程简述如下：</p>
+<ul>
+<li>初始（ <code>start</code> 置 <code>0</code>）：此时 S-R 锁存器的 <code>set</code> 信号一定为0，根据锁存器当前存储信号 <code>q</code> 的值分类讨论<ul>
+<li><code>q=0</code> 表示进行串行输入，即每一个时钟周期移位并补 <code>1</code>，若干周期后 <code>Q[7]~Q[1]</code> 均为 <code>1</code>，此时 <code>finish</code> 信号置<code>1</code>，<code>reset</code> 信号置 <code>0</code>，锁存器状态保持为 <code>0</code></li>
+<li><code>q=1</code> 表示进行并行输入，此时并行输入 7 位脏值，但由于最高位接地一定为 <code>0</code>，<code>finish</code> 信号一定为 <code>0</code>，<code>reset</code> 信号置 <code>1</code>，锁存器状态改变 <code>q=0</code>，后经过一段时间后锁存器状态为 <code>0</code>，<code>finish</code> 为 <code>1</code></li>
+<li>初始状态开始一段时间以后，<code>finish</code> 信号一定为 <code>1</code>，表示并未进行串行输出，此时模块状态稳定，等待 <code>start</code> 信号</li>
+</ul>
+</li>
+<li>开始传输（外界准备好并行输入的数据后，<code>start</code> 置1）：在并行输入的 7 位数据准备好后，<code>start</code> 信号进行一次脉冲（0-1-0），（因为初始状态下 <code>finish</code> 置 <code>1</code>）在 <code>start</code> 置 <code>1</code> 时，S-R 锁存器进行一次 set，<code>q=1</code>，移位寄存器进行了并行输入 <code>Q[7:0] = {1'b0, D[6:0]}</code><ul>
+<li>最高位存在一个 <code>0</code>，因此一定有 <code>finish=0</code><ul>
+<li><code>sclk = finish | clk</code>，此时 <code>sclk</code> 值和 <code>clk</code> 完全相同，即输出的时间点和移位寄存器进行一次右移输出的时间点相同</li>
+<li><code>ser_out</code> 每一个时钟周期输出最低位，右移一位，高位补 <code>1</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>传输结束：传输过程中，高位始终补 <code>1</code>，当并行输入的 7 位全部输出后，当前的 <code>Q</code> 值为 <code>8'b1111_1110</code><ul>
+<li><code>finish</code> 置 <code>1</code>，表示串行输出结束<ul>
+<li><code>sclk</code> 置 <code>1</code>，不再存在“上升沿”</li>
+</ul>
+</li>
+<li><code>q=0</code>，且 <code>set</code> 和 <code>reset</code> 信号均为 <code>0</code>，保持</li>
+<li>等待下一个 <code>start</code> 信号，重新传输</li>
+</ul>
+</li>
+</ul>
+<p>因为直接使用逻辑门可能会综合失败，这里提供模仿 SR 锁存器行为的模块：</p>
+<div class="language-verilog highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">module</span><span class="w"> </span><span class="n">SR_Latch</span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">S</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">R</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">Q</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">Qn</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="p">);</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="n">Q_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">S</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">R</span><span class="p">)</span><span class="w"> </span><span class="n">Q_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">S</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">R</span><span class="p">)</span><span class="w"> </span><span class="n">Q_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Q_reg</span><span class="p">;</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">Qn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="n">Q_reg</span><span class="p">;</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="k">endmodule</span>
+</span></code></pre></div></td></tr></table></div>
+<p>请你完善以下代码，得到一个任意位宽的 P2S 模块：</p>
+<div class="language-verilog highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span>
+<span class="normal"><a href="#__codelineno-6-23">23</a></span>
+<span class="normal"><a href="#__codelineno-6-24">24</a></span>
+<span class="normal"><a href="#__codelineno-6-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">module</span><span class="w"> </span><span class="n">P2S</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="p">#(</span><span class="k">parameter</span><span class="w"> </span><span class="n">BIT_WIDTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">8</span><span class="p">)(</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="k">input</span><span class="p">[</span><span class="n">BIT_WIDTH</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">par_in</span><span class="p">,</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sclk</span><span class="p">,</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sclrn</span><span class="p">,</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sout</span><span class="p">,</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">EN</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="p">);</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">    </span><span class="kt">wire</span><span class="p">[</span><span class="nl">BIT_WIDTH:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Q</span><span class="p">;</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="w">    </span><span class="n">SR_Latch</span><span class="w"> </span><span class="c1">// Your code here</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">    </span><span class="n">ShiftReg</span><span class="w"> </span><span class="c1">// Your code here</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">finish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">// Your code here</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">EN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">start</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">finish</span><span class="p">;</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">sclk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">finish</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">~</span><span class="n">clk</span><span class="p">;</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">sclrn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">sout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Q</span><span class="p">[</span><span class="mh">0</span><span class="p">];</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24"></a>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="k">endmodule</span>
+</span></code></pre></div></td></tr></table></div>
+<p>补充说明几个电路图中没有提到的信号：</p>
+<ul>
+<li><code>sclk</code>：串行通信所用的“时钟”，在不进行通信时常置 <code>1</code> 或 <code>0</code>，在 <code>sclk</code> 上升沿提供串行通信的一位信息 <code>sout</code></li>
+<li><code>EN</code>：高位有效，用来控制板上 LED 与七段数码管的使能，在重新载入数据时应置 <code>0</code> 避免闪烁</li>
+<li><code>sclrn</code>：我们可以不使用重置信号，常置 <code>1</code> 无效状态</li>
+</ul>
+<p>完成模块后，请设计仿真文件进行仿真。</p>
+<div class="admonition success">
+<p class="admonition-title">Congratulations!</p>
+<p>完成 <code>P2S</code> 及其仿真，即可能获得 100 分（后一小节为加分项）。</p>
+</div>
+<h3 id="led_1">主板 LED 与七段数码管驱动模块</h3>
+<p>分别设计 LED 与七段数码管驱动模块（实际上就是对不同位宽 16 位和 64 位 P2S 的封装）。</p>
+<h4 id="ledp2s">LEDP2S</h4>
+<p><code>LEDP2S</code> 是对 16 位 P2S 的简单封装，直接在模块中实例化一个参数 <code>DATA_WIDTH</code> 为 16 的 <code>P2S</code> 模块即可。</p>
+<div class="language-verilog highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">module</span><span class="w"> </span><span class="n">LEDP2S</span><span class="p">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="k">input</span><span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">par_in</span><span class="p">,</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sclk</span><span class="p">,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sclrn</span><span class="p">,</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sout</span><span class="p">,</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">EN</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="p">);</span>
+</span></code></pre></div>
+<h4 id="sseg_dev">Sseg_Dev</h4>
+<p><code>Sseg_Dev</code> 中需要对传入的 <code>LEs, points, hexs</code> 等信号进行解析，获得一个 64 位数据再将其传入 64 位 <code>P2S</code> 模块中。</p>
+<div class="language-verilog highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">module</span><span class="w"> </span><span class="n">Sseg_Dev</span><span class="p">(</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">hexs</span><span class="p">,</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">points</span><span class="p">,</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">LEs</span><span class="p">,</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sclk</span><span class="p">,</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sclrn</span><span class="p">,</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">sout</span><span class="p">,</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">EN</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>请直接使用以下模块获得 64 位数据：</p>
+<div class="language-verilog highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">module</span><span class="w"> </span><span class="n">HexsTo8Seg</span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">hexs</span><span class="p">,</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">points</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">LEs</span><span class="p">,</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="p">[</span><span class="mh">63</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">seg_data</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">);</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="n">HexToSeg</span><span class="w"> </span><span class="n">HTS0</span><span class="p">(.</span><span class="n">hex</span><span class="p">(</span><span class="n">hexs</span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">28</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">LE</span><span class="p">(</span><span class="n">LEs</span><span class="p">[</span><span class="mh">7</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">point</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mh">7</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">segment</span><span class="p">(</span><span class="n">seg_data</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]));</span><span class="w">  </span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="n">HexToSeg</span><span class="w"> </span><span class="n">HTS1</span><span class="p">(.</span><span class="n">hex</span><span class="p">(</span><span class="n">hexs</span><span class="p">[</span><span class="mh">27</span><span class="o">:</span><span class="mh">24</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">LE</span><span class="p">(</span><span class="n">LEs</span><span class="p">[</span><span class="mh">6</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">point</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mh">6</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">segment</span><span class="p">(</span><span class="n">seg_data</span><span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">8</span><span class="p">]));</span><span class="w"> </span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="n">HexToSeg</span><span class="w"> </span><span class="n">HTS2</span><span class="p">(.</span><span class="n">hex</span><span class="p">(</span><span class="n">hexs</span><span class="p">[</span><span class="mh">23</span><span class="o">:</span><span class="mh">20</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">LE</span><span class="p">(</span><span class="n">LEs</span><span class="p">[</span><span class="mh">5</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">point</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mh">5</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">segment</span><span class="p">(</span><span class="n">seg_data</span><span class="p">[</span><span class="mh">23</span><span class="o">:</span><span class="mh">16</span><span class="p">]));</span><span class="w">  </span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="n">HexToSeg</span><span class="w"> </span><span class="n">HTS3</span><span class="p">(.</span><span class="n">hex</span><span class="p">(</span><span class="n">hexs</span><span class="p">[</span><span class="mh">19</span><span class="o">:</span><span class="mh">16</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">LE</span><span class="p">(</span><span class="n">LEs</span><span class="p">[</span><span class="mh">4</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">point</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mh">4</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">segment</span><span class="p">(</span><span class="n">seg_data</span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">24</span><span class="p">]));</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="n">HexToSeg</span><span class="w"> </span><span class="n">HTS4</span><span class="p">(.</span><span class="n">hex</span><span class="p">(</span><span class="n">hexs</span><span class="p">[</span><span class="mh">15</span><span class="o">:</span><span class="mh">12</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">LE</span><span class="p">(</span><span class="n">LEs</span><span class="p">[</span><span class="mh">3</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">point</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mh">3</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">segment</span><span class="p">(</span><span class="n">seg_data</span><span class="p">[</span><span class="mh">39</span><span class="o">:</span><span class="mh">32</span><span class="p">]));</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="n">HexToSeg</span><span class="w"> </span><span class="n">HTS5</span><span class="p">(.</span><span class="n">hex</span><span class="p">(</span><span class="n">hexs</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">8</span><span class="p">]),</span><span class="w">  </span><span class="p">.</span><span class="n">LE</span><span class="p">(</span><span class="n">LEs</span><span class="p">[</span><span class="mh">2</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">point</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mh">2</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">segment</span><span class="p">(</span><span class="n">seg_data</span><span class="p">[</span><span class="mh">47</span><span class="o">:</span><span class="mh">40</span><span class="p">]));</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="n">HexToSeg</span><span class="w"> </span><span class="n">HTS6</span><span class="p">(.</span><span class="n">hex</span><span class="p">(</span><span class="n">hexs</span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">4</span><span class="p">]),</span><span class="w">   </span><span class="p">.</span><span class="n">LE</span><span class="p">(</span><span class="n">LEs</span><span class="p">[</span><span class="mh">1</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">point</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mh">1</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">segment</span><span class="p">(</span><span class="n">seg_data</span><span class="p">[</span><span class="mh">55</span><span class="o">:</span><span class="mh">48</span><span class="p">]));</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">    </span><span class="n">HexToSeg</span><span class="w"> </span><span class="n">HTS7</span><span class="p">(.</span><span class="n">hex</span><span class="p">(</span><span class="n">hexs</span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]),</span><span class="w">   </span><span class="p">.</span><span class="n">LE</span><span class="p">(</span><span class="n">LEs</span><span class="p">[</span><span class="mh">0</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">point</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mh">0</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">segment</span><span class="p">(</span><span class="n">seg_data</span><span class="p">[</span><span class="mh">63</span><span class="o">:</span><span class="mh">56</span><span class="p">]));</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="k">endmodule</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="k">module</span><span class="w"> </span><span class="n">HexToSeg</span><span class="p">(</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">hex</span><span class="p">,</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">LE</span><span class="p">,</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">point</span><span class="p">,</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">segment</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="p">);</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">    </span><span class="n">MyMC14495</span><span class="w"> </span><span class="n">MSEG</span><span class="p">(.</span><span class="n">D3</span><span class="p">(</span><span class="n">hex</span><span class="p">[</span><span class="mh">3</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">D2</span><span class="p">(</span><span class="n">hex</span><span class="p">[</span><span class="mh">2</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">D1</span><span class="p">(</span><span class="n">hex</span><span class="p">[</span><span class="mh">1</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">D0</span><span class="p">(</span><span class="n">hex</span><span class="p">[</span><span class="mh">0</span><span class="p">]),</span><span class="w"> </span><span class="p">.</span><span class="n">LE</span><span class="p">(</span><span class="n">LE</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">point</span><span class="p">(</span><span class="n">point</span><span class="p">),</span>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">        </span><span class="p">.</span><span class="n">a</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">b</span><span class="p">(</span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">c</span><span class="p">(</span><span class="n">c</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">d</span><span class="p">(</span><span class="n">d</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">e</span><span class="p">(</span><span class="n">e</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">g</span><span class="p">(</span><span class="n">g</span><span class="p">),</span><span class="w"> </span><span class="p">.</span><span class="n">p</span><span class="p">(</span><span class="n">p</span><span class="p">));</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">Segment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">};</span>
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="k">endmodule</span>
+</span></code></pre></div>
+<h4 id="_5">应用</h4>
+<p>请设计一个顶层模块，调用 <code>clkdiv</code> 模块获得分频时钟，调用你完成的 <code>LEDP2S</code> 将 <code>16'hBEEF</code> 数据展示在板上 LED，调用你完成的 <code>Sseg_Dev</code> 将 <code>32'hDEADBEEF</code> 展示在七段数码管上。</p>
+<p>请注意，将 <code>clkdiv</code> 分频得到的 <code>divres[20]</code> 接到两个 <code>P2S</code> 封装模块的 <code>start</code> 端口。</p>
+<h2 id="_6">思考题</h2>
+<p><strong>请选择完成“主板 LED 与七段数码管驱动模块”实验的同学回答这一思考题。</strong>观察 <code>P2S</code> 模块对信号 <code>sclk</code> 的赋值语句 <code>assign sclk = finish | ~clk;</code>，解释信号 <code>sclk</code> 的含义，尤其需要解释其驱动中 <code>~clk</code> 这一信号的意义。（换言之，如果赋值语句为 <code>assign sclk = finish | clk;</code> 会有什么问题？）</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.top"], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../javascripts/mathjax.js"></script>
+        
+      
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+      
+        
+          <script src="../../javascripts/tex-mml-chtml.js"></script>
+        
+      
+    
+  </body>
+</html>

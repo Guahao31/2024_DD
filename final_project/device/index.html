@@ -1,0 +1,856 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="GNG not Gua">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>外设使用 - 2024_DD</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_css/style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="2024_DD" class="md-header__button md-logo" aria-label="2024_DD" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2024_DD
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              外设使用
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="暗色模式"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="暗色模式" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="亮色模式"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="亮色模式" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/guahao31/2024_DD" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    2024_DD
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="2024_DD" class="md-nav__button md-logo" aria-label="2024_DD" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    2024_DD
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/guahao31/2024_DD" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    2024_DD
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Lab 4 - Warm Up
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Lab 4 - Warm Up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../warmup/tools_installation/" class="md-nav__link">
+        实验工具安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../warmup/lab4/" class="md-nav__link">
+        Lab4-实验工具使用
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/decoder/" class="md-nav__link">
+        Lab 5 - Decoder
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab6/seven-segment/" class="md-nav__link">
+        Lab 6 - 7-Segment Display Decoder
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab7/multiplexer/" class="md-nav__link">
+        Lab 7 - Multiplexer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab8/ALU/" class="md-nav__link">
+        Lab 8 - ALU
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab9/latches_flip_flops/" class="md-nav__link">
+        Lab 9 - Latches & Flip-flops
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labA/sync_counter/" class="md-nav__link">
+        Lab A - Synchronous counter
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labB/register/" class="md-nav__link">
+        Lab B - Register
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labC/counter_timer/" class="md-nav__link">
+        Lab C - Counter & Timer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labD/shift_register/" class="md-nav__link">
+        Lab D - Shift Register
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+          Other
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Other
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/about_git/" class="md-nav__link">
+        Git 基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/Verilog_Simulation/" class="md-nav__link">
+        在 Linux/macOS 上仿真
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/ISE_installation/" class="md-nav__link">
+        ISE 安装
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#led" class="md-nav__link">
+    LED
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    七段数码管
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    蜂鸣器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vga" class="md-nav__link">
+    VGA
+  </a>
+  
+    <nav class="md-nav" aria-label="VGA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    协议内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ps2" class="md-nav__link">
+    PS/2
+  </a>
+  
+    <nav class="md-nav" aria-label="PS/2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    协议内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    实现上的建议
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">外设使用</h1>
+<p>本课程大程设计可使用多种外设来完成交互，如用来输入的键盘/鼠标、开关、按钮，用来输出的七段数码管、LED、VGA、蜂鸣器等。其中开关、LED、七段数码管的使用在小实验中已较为熟练，在此不进行详细说明，仅提供部分资源或链接。</p>
+<h2 id="led">LED</h2>
+<p>Arduino 板上共有 8 个 LED，可直接使用 8 个信号控制亮灭，在 <a href="../../lab5/decoder/">Lab5</a> 中第一次使用。</p>
+<p>SWORD 板上有 16 个 LED，接收串行数据，由串行通信信号 <code>LED_sclk, LED_sclrn, LED_sout, LED_EN</code> 控制亮灭，其原理见 <a href="../../labD/shift_register/#onboard-LED-7seg">LabD</a>，这里提供 <code>LEDP2S</code> 的<a href="../../lab9/attachment/LEDP2S.ngc">网表文件</a>与<a href="../../lab9/attachment/LEDP2S_io.v">接口文件</a>，其约束请见任何小实验提供的约束中 <code>#16led</code> 注释部分。</p>
+<h2 id="_2">七段数码管</h2>
+<p>Arduino 板上共有 4 个七段数码管，可使用使能信号 <code>AN</code> 进行扫描并用 <code>SEGMENT</code> 传入 8 位信号控制打印内容，在 <a href="../../lab7/multiplexer/">Lab7</a> 中编写并使用。</p>
+<p>SWORD 板上有 8 个七段数码管，接受串行数据，由串行通信信号 <code>seg_sclk, seg_sclrn, seg_sout, seg_EN</code> 控制，其原理见 <a href="../../labD/shift_register/#onboard-LED-7seg">LabD</a>，在 <a href="../../lab8/ALU/">Lab8</a> 中第一次使用。</p>
+<h2 id="_3">蜂鸣器</h2>
+<p>SWORD 板载 Arduino 板上有蜂鸣器，可用来发出简单的音效，其约束如下：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>set_property PACKAGE_PIN AF25 [get_ports buzzer]
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>set_property IOSTANDARD LVCMOS33 [get_ports buzzer]
+</span></code></pre></div>
+<p>蜂鸣器接收一定频率的信号（如方波）并发出对应频率的声音，可以设计一个根据输入音高得到特定频率方波的模块来处理声音，它类似于：</p>
+<div class="language-verilog highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">module</span><span class="w"> </span><span class="n">buzzer_driver</span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">input</span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">note</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">beep</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>模块内部，你可以根据输入的音高得到对应频率 <code>freq</code> 进而产生这一频率的方波 <code>beep</code>。</p>
+<h2 id="vga">VGA</h2>
+<p>本节参考 <a href="https://embeddedthoughts.com/2016/07/29/driving-a-vga-monitor-using-an-fpga/">blog</a>，也可参考<a href="https://zhuanlan.zhihu.com/p/359125055">知乎文章</a>。</p>
+<p>VGA(Video Graphics Array) 协议是一种使用模拟信号的显示标准，我们需要提供的是数字信号（如比较重要的 RGB 三色值、扫描同步信号等），板内 DAC(Digital-to-Analog Converter, DAC/D2C) 会将其转换为 VGA 接口需要的模拟信号。</p>
+<h3 id="_4">协议内容</h3>
+<p>在此讲解一些比较基本的 VGA 协议内容，如果想了解更多请查看本节参考资料或自行搜索。</p>
+<p>影响画面质量的因素较主要的有分辨率、刷新率以及色彩。<strong>分辨率</strong>指屏幕中显示的有效像素点数量，一般以 <code>aaa × bbb</code> 表示，前者指一行中像素点个数，后者指一列中像素点个数。<strong>刷新率</strong>指屏幕内容刷新速度，一般以 Hz 为单位表示一秒钟刷新多少次。<strong>色彩</strong>主要指色彩空间格式与“精度”，VGA 要求使用 RGB 色彩空间（即红绿蓝三色混合）且为 12 位，即一个色彩通道用 4 位表示。在我们的实验中，使用 640×480@60Hz 的显示模式，需要接入的时钟频率为 25.175MHz。</p>
+<p>我们使用<strong>逐行扫描</strong>的方式来打印界面，即每次图片刷新都从左上角开始，先从左到右扫描完一行，再转到下一行的最左边开始扫描，直到扫描完最后一行。我们需要处理<strong>行时序</strong>与<strong>场时序</strong>，时序图如下（时序图来自<a href="https://zhuanlan.zhihu.com/p/87515249">知乎文章</a>）：</p>
+<p><img src="../pic/VGA-sync.png"></p>
+<p>首先提供数据，对于 640×480@60Hz 的显示模式，上图中行扫描的 <code>a, b, c, d, e</code> 分别为 <code>96, 48, 640, 16, 800</code>，场扫描的 <code>o, p, q, r, s</code> 分别为 <code>2, 33, 480, 10, 525</code>。下面以行时序为例进行解释：行同步阶段(96)将行同步信号置于<strong>低位</strong>进行同步；显示后沿(48)将行同步信号重新拉起到<strong>高位</strong>但并不显示图像（将 RGB 三色通道均置为 0 即可）；有效数据(640)为每行 640 个像素点，此时将像素点对应的色彩 RGB 值放置在相应通道上进行色彩输出；显示前沿(16)不显示图像；之后将进入下一个周期的行扫描（从行同步开始）此时已经开始对下一行进行扫描，一次扫描经过的像素点数量(800)，但实际打印的有效数据数量(640)。场同步扫描与行同步扫描相似，不再赘述。</p>
+<p>对于我们而言，只需要知道同步信号拉低与拉高的时机以及打印有效数据的时机即可（行坐标在 <code>[a+b, a+b+c)</code> 且列坐标在 <code>[o+p, o+p+q)</code> 时打印有效的数据）。</p>
+<h3 id="_5">使用</h3>
+<p>这里提供一个可用的 VGA 驱动模块<a href="../attachment/vgac.v">代码</a>，它来自老师提供的优秀工程。</p>
+<p>其模块接口如下：</p>
+<div class="language-verilog highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">module</span><span class="w"> </span><span class="n">vgac</span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">vga_clk</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clrn</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">d_in</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">8</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">row_addr</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">col_addr</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">rdn</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">hs</span><span class="p">,</span><span class="w"> </span><span class="n">vs</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">);</span>
+</span></code></pre></div>
+<p>输入信号：</p>
+<ul>
+<li><code>vga_clk</code>：由原理可知，迎接入 25MHz 时钟，如果接入后无法正常显示，可以尝试用 MMCM 获得 25.175MHz 的时钟接入</li>
+<li><code>clrn</code>：重置信号，低电平有效，有效时将扫描信号归位到 (0, 0)</li>
+<li><code>d_in</code>：12 位 RGB 信号，格式为 <code>bbbb_gggg_rrrr</code>，每个色彩通道使用 4 位。需要注意，这里的 RGB 值是根据<strong>上个</strong>时钟周期的 <code>row_addr, col_addr</code> 确定的</li>
+</ul>
+<p>输出信号：</p>
+<ul>
+<li><code>row_addr, col_addr</code>：扫描地址</li>
+<li><code>r, g, b</code>：三个色彩通道值，直接连接到顶层模块输出即可</li>
+<li><code>rdn</code>：判断当前扫描到的地址是否为有效数据，低电平为有效</li>
+<li><code>hs, vs</code>：行同步信号与场同步信号，详见原理</li>
+</ul>
+<h2 id="ps2">PS/2</h2>
+<p>本节参考 <a href="https://zhuanlan.zhihu.com/p/384221079">知乎文章</a> 及 <a href="https://embeddedthoughts.com/2016/07/05/fpga-keyboard-interface/">blog</a>，还可参考 <a href="https://www.stepfpga.com/doc/ps2%E9%94%AE%E7%9B%98%E6%A8%A1%E5%9D%97">blog</a></p>
+<p>PS/2 接口(Personal System/2)是一种 PC 电脑上的接口，可用来连接键盘和鼠标。接口共有 6 个接脚，除接地与 Vcc 外，有<strong>时钟和一位数据</strong>（另外两脚为保留未使用）。</p>
+<p>Sword 板内有 USB-PS2 转换，因此我们可以将 USB 键盘或鼠标插入板上 USB 口来使用，PS/2 相关信号约束如下：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>set_property PACKAGE_PIN N18 [get_ports PS2_clk]
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>set_property IOSTANDARD LVCMOS33 [get_ports PS2_clk]
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>set_property PACKAGE_PIN M19 [get_ports PS2_data]
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>set_property IOSTANDARD LVCMOS33 [get_ports PS2_data]
+</span></code></pre></div>
+<h3 id="_6">协议内容</h3>
+<p>PS/2 协议中，一次传输有效数据为<strong>一字节</strong>，每次传输（一帧）为 <strong>11 位</strong>，分别为开始位（1 位，一直为 <code>0</code>）、有效数据（8 位）、校验位（1 位）、结束位（1 位，一直为 <code>1</code>），在我们简单的设计里，每一帧数据中只需要关注中间的 8 位有效数据即可。</p>
+<p><img src="../pic/ps2-sync.png"></p>
+<p>PS/2 将键盘编码分为通码(Make)与断码(Break)，通码代表“按下”，断码代表“松开”。键盘上大部分按键的通码只有一字节（比如 WASD 等字母按键），但也有特殊按键的通码为两字节（比如上下左右，其格式为 <code>E0</code> 开头的两字节数据）。断码是在通码的基础上添加一字节的 <code>F0</code> 数据，比如 <code>W</code> 的通码为 <code>1D</code> 断码为 <code>F0 1D</code>，上 <code>↑</code> 的通码为 <code>E0 75</code> 断码为 <code>E0 F0 75</code>。由此我们可知，通码可能需要 1~2 帧，断码可能需要 2~3 帧（如果传输内容超过 1 帧，键盘可以保证传输内容是连续的，不会被其他信号隔开）。</p>
+<details>
+<summary>按键-通码/断码对照表</summary>
+<p>较为常用的对照表（还有其他标准）：</p>
+<p><img src="../pic/ps2-keyboard-code.jpg"></p>
+<p>可以用键盘位置对应的表：</p>
+<p><img src="../pic/PS2_keyboard.jpg"></p>
+</details>
+<p>观察几个按键行为加深理解（图片来自参考内容中的 <a href="https://zhuanlan.zhihu.com/p/384221079">知乎文章</a>）。</p>
+<p>按一下 <code>A</code> 后释放：</p>
+<p><img src="../pic/ps2-example0.png"></p>
+<p>长按 <code>A</code> 后释放：</p>
+<p><img src="../pic/ps2-example1.png"></p>
+<p>组合键 <code>Shift+A</code>：</p>
+<p><img src="../pic/ps2-example2.png"></p>
+<p>PS/2 键盘可以实现全键无冲突，因为按键按下后如果不松开，则至少不会发送断码，我们可以认为在得到一个按键断码之前，这个按键一直是被按下的状态。</p>
+<h3 id="_7">实现上的建议</h3>
+<p>根据你的需要实现模块，如果你的需要仅是使用特定的几个按键比如 ↑↓←→ 以及回车键，那么你的 PS2 模块可以类似于：</p>
+<div class="language-verilog highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">module</span><span class="w"> </span><span class="n">PS2</span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"> </span><span class="n">rst</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">ps2_clk</span><span class="p">,</span><span class="w"> </span><span class="n">ps2_data</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">up</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">enter</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">);</span>
+</span></code></pre></div>
+<p>如果你需要键入内容（需要注意通码和 ASCII 的值并不对应），那么可能类似于：</p>
+<div class="language-verilog highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">module</span><span class="w"> </span><span class="n">PS2</span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"> </span><span class="n">rst</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">ps2_clk</span><span class="p">,</span><span class="w"> </span><span class="n">ps2_data</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">key_state</span><span class="p">,</span><span class="w"> </span><span class="c1">// Make or Break</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">key_ascii</span><span class="w"> </span><span class="c1">// Code -&gt; ASCII</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">);</span>
+</span></code></pre></div>
+<p><code>ps2_clk</code> 的频率较低，数量级在 <code>kHz</code> 水平，而我们 FPGA 的时钟是较快的，在实现时可以对时钟进行打拍记录来确定“下降沿”的位置（参考代码来自 <a href="https://github.com/PAN-Ziyue/FPGA--JOJO/blob/master/JOJO/Framework/PS2.v">Pan-Ziyue/FPGA-JOJO</a>）：</p>
+<div class="language-verilog highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">reg</span><span class="w"> </span><span class="n">ps2_clk_falg0</span><span class="p">,</span><span class="w"> </span><span class="n">ps2_clk_falg1</span><span class="p">,</span><span class="w"> </span><span class="n">ps2_clk_falg2</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">posedge</span><span class="w"> </span><span class="n">rst</span><span class="p">)</span><span class="k">begin</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">rst</span><span class="p">)</span><span class="k">begin</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="n">ps2_clk_falg0</span><span class="o">&lt;=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="n">ps2_clk_falg1</span><span class="o">&lt;=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="n">ps2_clk_falg2</span><span class="o">&lt;=</span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">        </span><span class="n">ps2_clk_falg0</span><span class="o">&lt;=</span><span class="n">ps2_clk</span><span class="p">;</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">        </span><span class="n">ps2_clk_falg1</span><span class="o">&lt;=</span><span class="n">ps2_clk_falg0</span><span class="p">;</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">        </span><span class="n">ps2_clk_falg2</span><span class="o">&lt;=</span><span class="n">ps2_clk_falg1</span><span class="p">;</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="k">end</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="kt">wire</span><span class="w"> </span><span class="n">negedge_ps2_clk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">ps2_clk_falg1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ps2_clk_falg2</span><span class="p">;</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="kt">reg</span><span class="w"> </span><span class="n">negedge_ps2_clk_shift</span><span class="p">;</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="n">negedge_ps2_clk_shift</span><span class="o">&lt;=</span><span class="n">negedge_ps2_clk</span><span class="p">;</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="k">end</span>
+</span></code></pre></div>
+<p>在下降沿时捕捉有效信息（从一帧的第 2 位开始连续 8 位为有效数据）：</p>
+<div class="language-verilog highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">posedge</span><span class="w"> </span><span class="n">rst</span><span class="p">)</span><span class="k">begin</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">rst</span><span class="p">)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="n">temp_data</span><span class="o">&lt;=</span><span class="mh">8</span><span class="mi">&#39;d0</span><span class="p">;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">negedge_ps2_clk_shift</span><span class="p">)</span><span class="k">begin</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="k">case</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">            </span><span class="mh">4</span><span class="mi">&#39;d2</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">temp_data</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">ps2_data</span><span class="p">;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">            </span><span class="mh">4</span><span class="mi">&#39;d3</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">temp_data</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">ps2_data</span><span class="p">;</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">            </span><span class="mh">4</span><span class="mi">&#39;d4</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">temp_data</span><span class="p">[</span><span class="mh">2</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">ps2_data</span><span class="p">;</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">            </span><span class="mh">4</span><span class="mi">&#39;d5</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">temp_data</span><span class="p">[</span><span class="mh">3</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">ps2_data</span><span class="p">;</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">            </span><span class="mh">4</span><span class="mi">&#39;d6</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">temp_data</span><span class="p">[</span><span class="mh">4</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">ps2_data</span><span class="p">;</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">            </span><span class="mh">4</span><span class="mi">&#39;d7</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">temp_data</span><span class="p">[</span><span class="mh">5</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">ps2_data</span><span class="p">;</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">            </span><span class="mh">4</span><span class="mi">&#39;d8</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">temp_data</span><span class="p">[</span><span class="mh">6</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">ps2_data</span><span class="p">;</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">            </span><span class="mh">4</span><span class="mi">&#39;d9</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">temp_data</span><span class="p">[</span><span class="mh">7</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">ps2_data</span><span class="p">;</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">            </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">temp_data</span><span class="o">&lt;=</span><span class="n">temp_data</span><span class="p">;</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="k">endcase</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="k">end</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="n">temp_data</span><span class="o">&lt;=</span><span class="n">temp_data</span><span class="p">;</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="k">end</span>
+</span></code></pre></div>
+<p>这里的 <code>temp_data</code> 除了可能是代表按键位置的数据，也可能是特殊按键的标记 <code>E0</code>，还可能是断码的标记 <code>F0</code>，你需要对此加以判断，并设置断码/特殊按键的提示，因为在 <code>F0/E0</code> 之后还需要接收数据才能组成完整的按键。具体实现可以参考上述潘学长提供的<a href="https://github.com/PAN-Ziyue/FPGA--JOJO/blob/master/JOJO/Framework/PS2.v">代码</a>。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.top"], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../javascripts/mathjax.js"></script>
+        
+      
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+      
+        
+          <script src="../../javascripts/tex-mml-chtml.js"></script>
+        
+      
+    
+  </body>
+</html>
