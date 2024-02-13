@@ -1,7 +1,7 @@
 # 实验工具的使用
 
-!!! danger "请注意"
-    本实验并未正式公布，内容与要求随时可能变化，仅供提前完成实验的同学参考。
+<!-- !!! danger "请注意"
+    本实验并未正式公布，内容与要求随时可能变化，仅供提前完成实验的同学参考。 -->
 
 <!-- TODO: 需要修改风格，路径/操作顺序用代码块``包裹，按钮用*** ***包裹为斜体加粗 -->
 
@@ -67,7 +67,7 @@ Vivado 无法读取 Logisim 的工程文件或原理图文件，需要通过将 
 
 ### 动手做 {: #logisim-example_lets-do-it}
 
-1. 浏览 Logisim 基本操作后，请**绘制**以下电路图。请注意，**端口名称**一定不要写错，三个输入端口分别为 `I0`、`I1`、`I2`，输出端口为 `res`。
+1. 浏览 Logisim 基本操作后，请**绘制**以下电路图。请注意，**端口名称**一定不要写错，三个输入端口分别为 `I0`、`I1`、`I2`，输出端口为 `res`。电路图中使用了 Pin（输入输出口，样式与版本有关，可能与图中不同）NOT AND OR XOR 门。
     
     <img src="../pic/lab4/logisim_example.png" alt="logisim example" style="zoom:70%">
 
@@ -175,9 +175,7 @@ SWORD 板上有 16 个开关，我们之前将 `I0, I1, I2` 分别约束到了**
 
 ## FAQ
 
-> Updated 2023.10.17
-
-### synthesis failed with NO Warnings/Errors
+### Synthesis failed with NO Warnings/Errors
 
 请查看“计算机名称”，如果为中文，请参照 [Windows 10 修改电脑名称](https://support.microsoft.com/zh-cn/windows/%E9%87%8D%E5%91%BD%E5%90%8D-windows-10-%E7%94%B5%E8%84%91-750bc75d-8ff8-e99a-b9dc-04dff566ae74)将计算机名称修改为**英文**。Windows 11 用户可以在`设置-系统-系统信息-重命名这台电脑`进行修改，也可以直接搜索“重命名你的电脑”。感谢吴cy同学发现的解决方法。
 
