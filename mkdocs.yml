@@ -74,9 +74,9 @@ nav:
   - Lab B - Register: labB/register.md
   - Lab C - Counter & Timer: labC/counter_timer.md
   - Lab D - Shift Register: labD/shift_register.md
-  # - Final Project: 
-  #   - 大程要求: final_project/final_project.md
-  #   - 外设使用: final_project/device.md
+  - Final Project: 
+    - 大程要求: final_project/final_project.md
+    - 外设使用: final_project/device.md
   - Other:
     - Git 基础: Other/about_git.md
     - 在 Linux/macOS 上仿真: Other/Verilog_Simulation.md
