@@ -320,6 +320,20 @@ module LEDP2S(
 );
 ```
 
+你需要在约束文件中添加下列约束：
+
+```
+# Serial LED
+set_property PACKAGE_PIN N26 [get_ports ledclk]
+set_property PACKAGE_PIN N24 [get_ports ledclrn]
+set_property PACKAGE_PIN M26 [get_ports ledsout]
+set_property PACKAGE_PIN P18 [get_ports LEDEN]
+set_property IOSTANDARD LVCMOS33 [get_ports ledclk]
+set_property IOSTANDARD LVCMOS33 [get_ports ledclrn]
+set_property IOSTANDARD LVCMOS33 [get_ports ledsout]
+set_property IOSTANDARD LVCMOS33 [get_ports LEDEN]
+```
+
 #### Sseg_Dev
 
 `Sseg_Dev` 中需要对传入的 `LEs, points, hexs` 等信号进行解析，获得一个 64 位数据再将其传入 64 位 `P2S` 模块中。
